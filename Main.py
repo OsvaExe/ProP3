@@ -1,14 +1,34 @@
 #prueba para ver si funciona todo igual, ya que no aprendí nada y todo lo hizo Pepe
  #Archivo de excel Empleados.xlsx
 import openpyxl
+import os
 #Workbook o libro de excel:
-wb=openpyxl.load_workbook("C:/Users/patyp/OneDrive/Documentos/ArchivosXLS/Empleados.xlsx")
+directorio= os.path.dirname(__file__)# con este comando se consigue la direccion de main
+excel_path=os.path.join(directorio, "Empleados.xlsx")
+wb=openpyxl.load_workbook(excel_path)
 #WorkSheet u Hoja activa de Excel
 ws = wb.active 
 
+def validar ():
+    """
+    Valida que el usuario ingrese un número entero entre 1 y 6.
+    Continúa pidiendo el input hasta que se ingrese un valor válido.
+    """
+    while True:
+        valor=input("ingresa un numero entre 1 a 6 \n :")
+        try:
+             numero=int(valor)
+             if 1 <= numero <=6:
+                  return numero
+             else:
+                  print("el numero debe de estar entre 1 y 6")
+                  #return 0
+        except ValueError:
+             print("ese no es un numero ")
+        #return 0
 
 def ppal(): 
-  empleadoData=[]
+  #empleadoData=[] pase la lista a dentro del case 1
   opcion=0
   while opcion!=6:  
     print(" ")
@@ -19,12 +39,13 @@ def ppal():
     print("5. Sanciones y actualización de sueldo por quincena")
     
     print("6: Salir del programa")
-    opcion=int(input("Digite una opcion \U0001F449: "))
+    opcion=validar()
 
     match(opcion):
     #--------------------AGREGAR EMPLEADO----------------------    
         case(1):
             conteof = 0
+            empleadoData=[]# la pase aqui para asegurar que la ilsta este vacia
             #Verificación de la cantidad de datos
             CantMAXfilas=ws.max_row
             CantMAXcol=ws.max_column
@@ -43,7 +64,7 @@ def ppal():
             empleadoData.append(0)  #RETARDO
             print(empleadoData)
             ws.append(empleadoData)
-            wb.save("C:/Users/patyp/OneDrive/Documentos/ArchivosXLS/Empleados.xlsx")  #se guardan los cambios en el archivo
+            wb.save(excel_path)  #se guardan los cambios en el archivo
     #----------MODIFICAR ELEMENTO--------------------------------------------------------------------        
         case(2):
             #Modificar un elemento
