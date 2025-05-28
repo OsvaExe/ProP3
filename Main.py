@@ -80,7 +80,7 @@ def ppal():
                     empleadoData.append(1)  # ASISTENCIA 
                     empleadoData.append(0)  # RETARDO
                     print(empleadoData)
-                    ws.append(empleadoData)
+                    ws.append(empleadoData)  # Se agrega la lista al final de la hoja activa
                     wb.save(excel_path)  # se guardan los cambios en el archivo
             
             #----------MODIFICAR ELEMENTO--------------------------------------------------------------------        
@@ -176,7 +176,7 @@ def ppal():
                                 wb.save(excel_path)
                                 print(f"Estatus del empleado {numeroe} actualizado a: {nuevo_estatus}")
                                 break
-
+            
                             case _:
                                 print("Opción no válida")
                                 break
