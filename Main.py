@@ -103,7 +103,15 @@ def ppal():
                         print("2. Apellidos")
                         print("3. Corregir retraso")
                         print("4. Cambiar Estatus")
-                        OPmenumodif = int(input("Seleccione una opción a modificar: "))
+                        while True:
+                            try:
+                                OPmenumodif = int(input("Seleccione una opción a modificar (1-4): "))
+                                if OPmenumodif < 1 or OPmenumodif > 4:
+                                    print("Opción no válida. Debe ser un número entre 1 y 4.")
+                                    continue
+                                break
+                            except ValueError:
+                                print("Carácter inválido. Debe ser un número entero entre 1 y 4. Intente de nuevo.")
                         match(OPmenumodif):
                             case(1): 
                                 #Modificar nombre
