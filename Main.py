@@ -1,4 +1,4 @@
-#prueba para ver si funciona todo igual, ya que no aprendí nada y todo lo hizo Pepe
+#Poryecto Programacion Parcial 3
  #Archivo de excel Empleados.xlsx
 import openpyxl
 import os
@@ -119,9 +119,21 @@ def ppal():
                             break   
                         case(3):
                             #Modificar retardos
-                            print("Modificar la cantidad de retrasos, esto sucede cuando se justifican")
-                            print("La cantidad de retrasos es de 1 a 3")
-                            print("\U0001F480") 
+                            print("Modificar la cantidad de retrasos, esto sucede cuando son justificados.")
+                            while True:
+                                try:
+                                    nuevo_retardo = int(input("Ingrese la nueva cantidad de retardos (0 a 3): "))
+                                    if 0 <= nuevo_retardo <= 3:
+                                        ws.cell(row=numfila, column=6, value=nuevo_retardo)  # columna 6 = retardos
+                                        wb.save("C:/Users/patyp/OneDrive/Documentos/ArchivosXLS/Empleados.xlsx")
+                                        print(f"La cantidad de retardos del empleado {numeroe} se actualizó a {nuevo_retardo}")
+                                        print("\U0001F44D")
+                                        break
+                                    else:
+                                        print("El número de retardos debe estar entre 0 y 3.")
+                                except ValueError:
+                                    print("Por favor, ingrese un número válido.")
+                            break
                             break
                         case(4):
                             #Modificar Estatus
