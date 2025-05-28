@@ -115,8 +115,21 @@ def ppal():
                             print("\U0001F480") 
                             break
                         case(4):
-                            #Modificar Estatus
-                            print("Cambiar estatus solo admite A= Activo I=incapacitado")
+                             #Modificar Estatus
+                            estatus_actual = ws.cell(row=numfila, column=4).value
+                            nuevo_estatus = input("Cambiar estatus (solo se permite 'A' o 'I'): ").upper()
+
+                            if nuevo_estatus not in ["A", "I"]:
+                                print("Error: El estatus solo puede ser 'A' o 'I'")
+                                break
+
+                            if nuevo_estatus == estatus_actual:
+                                print(f"No se hará nada. El estatus ya es '{estatus_actual}'")
+                                break
+
+                            ws.cell(row=numfila, column=4, value=nuevo_estatus)
+                            wb.save(excel_path)
+                            print(f"Estatus del empleado {numeroe} actualizado a: {nuevo_estatus}")
                             break
                         case _:
                             print("Opción no válida")
