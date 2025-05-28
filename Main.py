@@ -195,12 +195,11 @@ def ppal():
             CantMAXcol=ws.max_column
             print("Actualizar sanciones")
             for i in range(2,CantMAXfilas): #Desde 1 hasta (1 hasta max cantidad de columnas)
+                num_emplea= ws.cell(row=i, column=1).value
+                nombre_emplea= ws.cell(row=i, column=2).value
+                apellidos_emplea= ws.cell(row=i, column=3).value
                 cant_retardos=ws.cell(row=i,column=6).value #columna de retardos
-                if cant_retardos==3:
-                     
-                     num_emplea= ws.cell(row=i, column=1).value
-                     nombre_emplea= ws.cell(row=i, column=2).value
-                     apellidos_emplea= ws.cell(row=i, column=3).value
+                if cant_retardos==3:                     
                      ws.cell(row=i, column=7, value=0.1)#descuento
                      sueldo_actual=21000-(21000*0.1)
                      ws.cell(row=i, column=8, value=sueldo_actual)
@@ -208,7 +207,7 @@ def ppal():
                      sueldo_nuevo = ws.cell(row=i, column=8).value 
                      print("El empleado ",num_emplea," ",nombre_emplea," ",apellidos_emplea," tiene de sueldo: ",sueldo_nuevo)
                 else:
-                     print("Debe imprimir también los que NO tienen sanción junto con su sueldo")
+                     print("el empleado",num_emplea," ",nombre_emplea," ",apellidos_emplea, "no tiene retardos ni descuentos en su sueldo")
                      
         case _:
             print("Saliendo del programa ")
