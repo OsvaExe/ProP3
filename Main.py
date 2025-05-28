@@ -45,6 +45,7 @@ def ppal():
     #--------------------AGREGAR EMPLEADO----------------------    
         case(1):
             conteof = 0
+            numrep=True  #bandera para confirmar nombre repetido
             empleadoData=[]# la pase aqui para asegurar que la ilsta este vacia
             #Verificación de la cantidad de datos
             CantMAXfilas=ws.max_row
@@ -53,18 +54,26 @@ def ppal():
             
             print("Se agregará un nuevo empleado al registro")
             numeroe=int(input("Escriba el numero del empleado:"))
-            nombres=input("Escriba el nombre o nombres (no apellidos) del empleado:")
-            apellidos=input("Escriba el o los apellidos del empleado: ")
-            print(" se Agrego a : ",numeroe,nombres,apellidos)
-            empleadoData.append(numeroe) #NUMERO EMPLEADO
-            empleadoData.append(nombres) #NOMBRE
-            empleadoData.append(apellidos) #APELLIDO
-            empleadoData.append("A")#ESTATUS
-            empleadoData.append(1)  #ASISTENCIA 
-            empleadoData.append(0)  #RETARDO
-            print(empleadoData)
-            ws.append(empleadoData)
-            wb.save(excel_path)  #se guardan los cambios en el archivo
+            #confirmar que el numero no este en la base de datos
+            col=ws['A']
+            for cell in col:
+                if str(cell.value)==str(numeroe):
+                    print("es numero de empleado ya existe en la base de datos")
+                    numrep=False
+                    #print(numrep)
+            if numrep:
+                nombres=input("Escriba el nombre o nombres (no apellidos) del empleado:")
+                apellidos=input("Escriba el o los apellidos del empleado: ")
+                print(" se Agrego a : ",numeroe,nombres,apellidos)
+                empleadoData.append(numeroe) #NUMERO EMPLEADO
+                empleadoData.append(nombres) #NOMBRE
+                empleadoData.append(apellidos) #APELLIDO
+                empleadoData.append("A")#ESTATUS
+                empleadoData.append(1)  #ASISTENCIA 
+                empleadoData.append(0)  #RETARDO
+                print(empleadoData)
+                ws.append(empleadoData)
+                wb.save(excel_path)  #se guardan los cambios en el archivo
     #----------MODIFICAR ELEMENTO--------------------------------------------------------------------        
         case(2):
             #Modificar un elemento
