@@ -190,7 +190,7 @@ def ppal():
                      ws.cell(row=i, column=7, value=0.1)#descuento
                      sueldo_actual=21000-(21000*0.1)
                      ws.cell(row=i, column=8, value=sueldo_actual)
-                     wb.save("C:/Users/patyp/OneDrive/Documentos/ArchivosXLS/Empleados.xlsx")#se guardan los cambios en el archivo
+                     wb.save(excel_path)#se guardan los cambios en el archivo
                      sueldo_nuevo = ws.cell(row=i, column=8).value 
                      print("El empleado ",num_emplea," ",nombre_emplea," ",apellidos_emplea," tiene de sueldo: ",sueldo_nuevo)
                 else:
