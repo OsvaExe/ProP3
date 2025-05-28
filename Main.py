@@ -95,7 +95,7 @@ def ppal():
                 for row in ws:
                     num_emplea = row[0].value #primer elemento de una fila
                     conteof = conteof + 1       #cuanta la cantidad de filas (cantidad de veces que se ejecuta el for)
-                    if num_emplea == numeroe:
+                    if str(num_emplea) == numeroe:
                         print("El empleado se encontró")
                         numfila = conteof
                         print("¿Desea modificar...")
