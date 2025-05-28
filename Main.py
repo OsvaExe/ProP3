@@ -133,7 +133,7 @@ def ppal():
                                         print("El número de retardos debe estar entre 0 y 3.")
                                 except ValueError:
                                     print("Por favor, ingrese un número válido.")
-                            break
+                                break
                             break
                         case(4):
                             #Modificar Estatus
