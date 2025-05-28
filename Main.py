@@ -93,7 +93,7 @@ def ppal():
                     print("¿Desea modificar...")
                     print("1. Nombre(s)")
                     print("2. Apellidos")
-                    print("3. Corregir retraso")
+                    print("3. Corregir retardos")
                     print("4. Cambiar Estatus")
                     OPmenumodif=int(input("Seleccione una opción a modificar: "))
                     match(OPmenumodif):
@@ -118,10 +118,29 @@ def ppal():
                             print("\U0001F44D")
                             break   
                         case(3):
-                            #Modificar retardos
-                            print("Modificar la cantidad de retrasos, esto sucede cuando se justifican")
-                            print("La cantidad de retrasos es de 1 a 3")
-                            print("\U0001F480") 
+                            #Corregir retardos
+                            retardos_actual = ws.cell(row=numfila, column=6).value  #columna de retardos
+                            print(f"Cantidad actual de retardos: {retardos_actual}")
+
+                            if retardos_actual == 0:
+                                print("No se pueden justificar más retardos porque ya tiene 0.")
+                                break
+                            while True:
+                                try:
+                                    nuevo_retardo = int(input("Escriba la nueva cantidad de retardos (solo puede ser 2, 1 o 0): "))
+                                    if nuevo_retardo < 0 or nuevo_retardo > 2:
+                                        print("El número de retardos debe ser 0, 1 o 2.")
+                                        break
+                                    if nuevo_retardo >= retardos_actual:
+                                        print("No se puede aumentar el número de retardos, solo justificar (reducir).")
+                                        break
+                                    # Aplicar el cambio
+                                    ws.cell(row=numfila, column=6, value=nuevo_retardo)
+                                    wb.save(excel_path)
+                                    print(f"Empleado {numeroe} ahora solo tiene {nuevo_retardo} retardos.")
+                                    print("\U0001F44D")
+                                except ValueError:
+                                    print("Debe escribir un número entero válido.")
                             break
                         case(4):
                             #Modificar Estatus
