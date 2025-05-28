@@ -141,6 +141,7 @@ def ppal():
                                     print("\U0001F44D")
                                 except ValueError:
                                     print("Debe escribir un número entero válido.")
+                                break
                             break
                         case(4):
                             #Modificar Estatus
