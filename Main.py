@@ -101,7 +101,7 @@ def ppal():
                             #Modificar nombre
                             nombrenuevo=input("Teclee el(los) nuevo(s) nombre(s): ")
                             ws.cell(row=numfila, column=2, value=nombrenuevo) #accediendo al numero de fila indicado en la columna 2 colocando el valor nuevo en esa celda
-                            wb.save("C:/Users/patyp/OneDrive/Documentos/ArchivosXLS/Empleados.xlsx") #se guardan los cambios en el archivo
+                            wb.save(excel_path) #se cambio el path de paty a Excel_path
                             print("El nombre del empleado ",numeroe," se actualizó a ")
                             valornuevo = ws.cell(row=numfila, column=2).value
                             print(valornuevo)
@@ -111,7 +111,7 @@ def ppal():
                              #Modificar Apellidos
                             apellidonuevo=input("Teclee el(los) nuevo(s) apellido(s): ")
                             ws.cell(row=numfila, column=3, value=apellidonuevo)
-                            wb.save("C:/Users/patyp/OneDrive/Documentos/ArchivosXLS/Empleados.xlsx") #se guardan los cambios en el archivo
+                            wb.save(excel_path) #se cambio el path de paty a Excel_path
                             print("El(los) apellido(s) del empleado ",numeroe," se actualizó a: ")
                             valornuevo = ws.cell(row=numfila, column=3).value
                             print(valornuevo)
@@ -160,7 +160,7 @@ def ppal():
                     numfila=conteof
                    # print(numfila)-----------------------------------------------------
                     ws.cell(row=numfila, column=4, value="B") #"B=BAJA" se asigna un valor en la columna 4
-                    wb.save("C:/Users/patyp/OneDrive/Documentos/ArchivosXLS/Empleados.xlsx")#se guardan los cambios en el archivo
+                    wb.save(excel_path)#se cambio el path de paty a Excel_path
                     valornuevo = ws.cell(row=numfila, column=4).value #Se obtiene el valor que se guardo en ESTATUS
                     print("El estatus del empleado ",numeroe," se actualizó a: ",valornuevo)
                     print("\U0001F494")
